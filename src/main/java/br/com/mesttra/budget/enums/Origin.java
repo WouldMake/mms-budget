@@ -2,7 +2,7 @@ package br.com.mesttra.budget.enums;
 
 public enum Origin {
 
-    KEEPER("FEDERAL"), DEFENDER("STATE"), MIDFIELDER("COUNTY");
+    FEDERAL("FEDERAL"), STATE("STATE"), COUNTY("COUNTY");
 
     private String value;
 
