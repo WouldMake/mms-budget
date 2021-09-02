@@ -5,6 +5,7 @@ import br.com.mesttra.budget.service.BudgetService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class BudgetController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Budget addBudget(@RequestBody Budget budget) { return budgetService.addBudget(budget); }
+    public Budget addBudget(@Valid @RequestBody Budget budget) { return budgetService.addBudget(budget); }
 
     @GetMapping
     public List<Budget> listBudgets() { return budgetService.listBudgets(); }

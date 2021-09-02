@@ -1,8 +1,10 @@
 package br.com.mesttra.budget.exception;
 
 import br.com.mesttra.budget.response.ErrorResponse;
+import com.fasterxml.jackson.core.JsonParseException;
 import org.hibernate.PropertyValueException;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,4 +19,19 @@ public class GlobalExceptionHandler {
     ErrorResponse handlePropertyValueException(PropertyValueException e) {
         return new ErrorResponse("X001", e.getMessage());
     }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(JsonParseException.class)
+    public @ResponseBody
+    ErrorResponse handlePropertyValueException(JsonParseException e) {
+        return new ErrorResponse("X002", e.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public @ResponseBody
+    ErrorResponse handlePropertyValueException(MethodArgumentNotValidException e) {
+        return new ErrorResponse("X003", e.getMessage());
+    }
+
 }
