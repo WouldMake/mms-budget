@@ -13,5 +13,7 @@ public class BudgetService {
 
     public BudgetService(BudgetRepository budgetRepository) { this.budgetRepository = budgetRepository; }
 
+    public Budget addBudget(Budget budget) { return budgetRepository.save(budget); }
+
     public List<Budget> listBudgets() { return budgetRepository.findAll(); }
 }

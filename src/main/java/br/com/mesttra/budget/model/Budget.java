@@ -16,9 +16,13 @@ public class Budget {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private Double totalAmount;
 
+    @Column(nullable = false)
     private Double spentAmount;
+
+    private String possibleDestinations;
 
     @Enumerated(EnumType.STRING)
     private Origin origin;
