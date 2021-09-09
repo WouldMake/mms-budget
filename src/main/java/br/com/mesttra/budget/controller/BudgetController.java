@@ -21,6 +21,12 @@ public class BudgetController {
     public Budget addBudget(@Valid @RequestBody Budget budget) { return budgetService.addBudget(budget); }
 
     @GetMapping
-    public List<Budget> listBudgets() { return budgetService.listBudgets(); }
+    public List<Budget> listBudgets(@RequestParam(required = false) String destination) {
+
+        if (destination == null || destination.isEmpty())
+            return budgetService.listBudgets();
+        else
+            return budgetService.listBudgetsByDestination(destination);
+    }
 
 }

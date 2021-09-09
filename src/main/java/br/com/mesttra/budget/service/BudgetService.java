@@ -3,6 +3,7 @@ package br.com.mesttra.budget.service;
 import br.com.mesttra.budget.data.BudgetRepository;
 import br.com.mesttra.budget.model.Budget;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -16,4 +17,7 @@ public class BudgetService {
     public Budget addBudget(Budget budget) { return budgetRepository.save(budget); }
 
     public List<Budget> listBudgets() { return budgetRepository.findAll(); }
+
+    public List<Budget> listBudgetsByDestination(String destination) { return budgetRepository.findByDestination(destination); }
+
 }
