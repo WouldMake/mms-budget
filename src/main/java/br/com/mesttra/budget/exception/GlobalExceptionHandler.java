@@ -2,6 +2,7 @@ package br.com.mesttra.budget.exception;
 
 import br.com.mesttra.budget.response.ErrorResponse;
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import org.hibernate.PropertyValueException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -34,4 +35,17 @@ public class GlobalExceptionHandler {
         return new ErrorResponse("X003", e.getMessage());
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(BusinessException.class)
+    public @ResponseBody
+    ErrorResponse handleBusinessException(BusinessException e) {
+        return new ErrorResponse("X004", e.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(JsonMappingException.class)
+    public @ResponseBody
+    ErrorResponse handleJsonMappingException(JsonMappingException e) {
+        return new ErrorResponse("X005", e.getMessage());
+    }
 }
