@@ -7,7 +7,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class BusinessException extends Exception {
+public class BusinessException extends Throwable {
 
     private String message;
 

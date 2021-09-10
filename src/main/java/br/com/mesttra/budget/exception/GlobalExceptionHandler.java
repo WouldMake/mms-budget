@@ -24,14 +24,14 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(JsonParseException.class)
     public @ResponseBody
-    ErrorResponse handlePropertyValueException(JsonParseException e) {
+    ErrorResponse handleJsonParseException(JsonParseException e) {
         return new ErrorResponse("X002", e.getMessage());
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public @ResponseBody
-    ErrorResponse handlePropertyValueException(MethodArgumentNotValidException e) {
+    ErrorResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         return new ErrorResponse("X003", e.getMessage());
     }
 

@@ -25,13 +25,6 @@ public class BudgetService {
 
     public Budget debitExpense(Long id, DebitExpenseRequest debitExpenseRequest) throws BusinessException {
 
-        /*
-        if (debitExpenseRequest.getFolder().toString().isEmpty()) {
-            // Throws exception
-            return null;
-        }
-        */
-
         Optional<Budget> budgetOptional = budgetRepository.findById(id);
 
         if (budgetOptional.isEmpty()) {
