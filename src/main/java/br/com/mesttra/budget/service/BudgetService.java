@@ -5,8 +5,8 @@ import br.com.mesttra.budget.exception.BusinessException;
 import br.com.mesttra.budget.model.Budget;
 import br.com.mesttra.budget.request.DebitExpenseRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +23,7 @@ public class BudgetService {
 
     public List<Budget> listBudgetsByDestination(String destination) { return budgetRepository.findByDestination(destination); }
 
+    @Transactional
     public Budget debitExpense(Long id, DebitExpenseRequest debitExpenseRequest) throws BusinessException {
 
         Optional<Budget> budgetOptional = budgetRepository.findById(id);
